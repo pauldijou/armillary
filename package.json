@@ -1,0 +1,45 @@
+{
+  "name": "sextant",
+  "version": "0.0.1",
+  "description": "Some pathfinding algorithm implementations",
+  "license": "Apache-2.0",
+  "main": "lib/node.js",
+  "browser": "lib/browser.js",
+  "homepage": "https://github.com/pauldijou/sextant",
+  "bugs": {
+    "email": "paul.dijou@gmail.com",
+    "url": "https://github.com/pauldijou/sextant/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pauldijou/sextant.git"
+  },
+  "author": {
+    "email": "paul.dijou@gmail.com",
+    "name": "Paul Dijou",
+    "url": "http://pauldijou.fr"
+  },
+  "keywords": [
+    "issue",
+    "new",
+    "open"
+  ],
+  "dependencies": {
+    "opn": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^5.3.1",
+    "jasmine": "^2.3.0",
+    "karma": "^0.12.37",
+    "karma-jasmine": "^0.3.6",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-webpack": "^1.5.1",
+    "phantomjs": "1.9.17",
+    "webpack": "^1.10.1",
+    "node-libs-browser": ">= 0.4.0 <=0.6.0"
+  },
+  "scripts": {
+    "test": "karma start"
+  }
+}
