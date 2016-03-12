@@ -6,13 +6,12 @@ function isEnd(cell) {
   return cell === 'e';
 }
 
-// COSTS
-// - a: 1.5
-// - e: 2
-// - u: 4
 function getCost(cell) {
+  const parsed = parseInt(cell, 10);
   if (cell === '#') {
     return false;
+  } else if (Number.isFinite(parsed)) {
+    return parsed;
   }
   return 1;
 }

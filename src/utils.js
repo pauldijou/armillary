@@ -1,28 +1,19 @@
-export const paramsKey = Symbol();
-
-function clean(list) {
-  for (let i = 0, l = list.length; i < l; ++i) {
-    delete list[i][paramsKey];
-  }
-}
-
 function path(end) {
   const result = [];
   let cursor = end;
   while (cursor) {
-    result.push(cursor);
-    cursor = cursor[paramsKey].parent;
+    result.unshift(cursor.node);
+    cursor = cursor.parent;
   }
-  return result.reverse();
+  return result;
 }
 
-export function formatResult(success, cause, lastNode, cleaners) {
+export function formatResult(lastNode, fail) {
   const res = {
-    success,
-    cause,
-    distance: lastNode && lastNode[paramsKey].distance || 0,
+    success: fail === undefined,
+    cause: fail,
+    distance: lastNode && lastNode.distance || 0,
     path: lastNode && path(lastNode) || []
   };
-  clean(cleaners || []);
   return res;
 }

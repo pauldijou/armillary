@@ -1,7 +1,7 @@
 import { aStar } from '../src';
 import { parseMaze, mazeNeighbors } from './utils';
 
-function testMaze(size, maze, expectedCause) {
+function testMaze(totalLength, totalDistance, maze, expectedCause) {
   const { start, end, nodes } = parseMaze(maze);
   const { success, cause, path, distance } = aStar({
     start,
@@ -11,36 +11,38 @@ function testMaze(size, maze, expectedCause) {
     heuristic: (from, to) => Math.sqrt(Math.pow(to.x - from.x, 2) + Math.pow(to.y - from.y, 2))
   });
   expect(expectedCause).toEqual(cause);
-  if (size !== path.length) {
+  if (totalLength !== path.length || totalDistance !== distance) {
+    console.log(`Expected ${totalDistance} in ${totalLength} cells, got ${distance} in ${path.length} cells.`)
     console.log(path);
   }
-  expect(size).toEqual(path.length);
+  expect(totalLength).toEqual(path.length);
+  expect(totalDistance).toEqual(distance);
 }
 
 describe('aStar', function () {
   it('should solve super duber easy mazes', function () {
-    testMaze(3, [
+    testMaze(3, 2, [
       's e',
     ]);
-    testMaze(3, [
+    testMaze(3, 2, [
       's',
       ' ',
       'e',
     ]);
-    testMaze(3, [
+    testMaze(3, 2, [
       's ',
       '#e',
     ]);
   });
 
   it('shouldnt solve an impossible maze', function () {
-    testMaze(0, [
+    testMaze(0, 0, [
       's#e',
     ], 'noPath');
   });
 
   it('should solve a one way maze', function () {
-    testMaze(62, [
+    testMaze(62, 61, [
       's#                ',
       ' ######    ##     ',
       ' #    #   ##  ### ',
@@ -54,11 +56,20 @@ describe('aStar', function () {
   });
 
   it('should solve a tricky maze', function () {
-    testMaze(13, [
+    testMaze(13, 12, [
       '       ',
       ' ####  ',
       ' #  #  ',
       's   # e',
     ]);
-  })
+  });
+
+  it('should favor shortest distances', function () {
+    testMaze(8, 8, [
+      's   ',
+      '    ',
+      '952 ',
+      'e   ',
+    ]);
+  });
 });
