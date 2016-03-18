@@ -1,17 +1,17 @@
-# sextant
+# armillary
 
 Pathfinding the easy way.
 
 ## Install
 
 ```
-npm install sextant --save
+npm install armillary --save
 ```
 
 ## A*
 
 ```javascript
-import { aStar } from 'sextant';
+import { aStar } from 'armillary';
 
 const { success, cause, path, distance } = aStar(/* options */);
 ```
@@ -44,7 +44,7 @@ const { success, cause, path, distance } = aStar(/* options */);
 ### Sample
 
 ```javascript
-import { aStar } from 'sextant';
+import { aStar } from 'armillary';
 
 // Let's create a 10x10 grid of nodes with random costs to access one given node, 1 +/- 0.5.
 const grid = [];
