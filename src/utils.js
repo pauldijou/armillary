@@ -9,11 +9,10 @@ function path(end) {
 }
 
 export function formatResult(lastNode, fail) {
-  const res = {
+  return {
     success: fail === undefined,
     cause: fail,
-    distance: lastNode && lastNode.distance || 0,
-    path: lastNode && path(lastNode) || []
+    distance: (lastNode && lastNode.distance) || 0,
+    path: path(lastNode)
   };
-  return res;
 }

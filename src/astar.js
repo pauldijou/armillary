@@ -1,4 +1,3 @@
-// import * as HayStack from './hayStack.js';
 import Heap from 'heapster';
 import { formatResult } from './utils';
 
@@ -10,7 +9,6 @@ export default function aStar({
   end, // Node
   neighbors, // Node -> Array[Node]
   heuristic = zero, // (from: Node, to: Node) -> Number
-  weight = 1, // Number
   data, // Any
   distance = one, // (from: Node, to: Node, data: Any) -> Number | false
   maxDistance = Infinity, // Number
@@ -88,7 +86,7 @@ export default function aStar({
       const isNew = neighbor.heuristic === undefined;
       if (isNew) {
         // Init once and for all the heuristic
-        neighbor.heuristic = weight * heuristic(neighbor.node, end);
+        neighbor.heuristic = heuristic(neighbor.node, end);
       }
 
       neighbor.rank = totalDistance + neighbor.heuristic;

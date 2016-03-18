@@ -1,10 +1,10 @@
 {
   "name": "sextant",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Some pathfinding algorithm implementations",
   "license": "Apache-2.0",
-  "main": "lib/node.js",
-  "browser": "lib/browser.js",
+  "main": "lib/index.js",
+  "browser": "lib/index.js",
   "homepage": "https://github.com/pauldijou/sextant",
   "bugs": {
     "email": "paul.dijou@gmail.com",
