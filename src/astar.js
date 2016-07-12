@@ -15,9 +15,9 @@ export default function aStar({
   timeout = false, // Number | Boolean
   on = {}, // Object({ added, updated, closed })
 }) {
-  if (!start) { throw new Error('You need to specify a starting node'); }
-  if (!end) { throw new Error('You need to specify an ending node'); }
-  if (!neighbors) { throw new Error('You need to specify a [neighbors] function'); }
+  if (start === null || start === undefined) { throw new Error('You need to specify a starting node'); }
+  if (end === null || end === undefined) { throw new Error('You need to specify an ending node'); }
+  if (typeof neighbors !== 'function') { throw new Error('You need to specify a [neighbors] function'); }
 
   const map = new Map();
   const nodes = new Heap((a, b) => b.rank - a.rank, { indexed: true });
